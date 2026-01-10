@@ -1,9 +1,18 @@
 from pizza import Pizza
 from typing import Type
+from enum import Enum
+from topping_tuple import Topping
+
+class Topping_names(Enum):
+    PEPPERONI = "Pepperoni"
+    MARGERITA = "Margerita"
+
 
 class Main:
-    def __init__(self, pizza: Type[Pizza]):
+    def __init__(self, pizza: Type[Pizza], topping_maker: Type[Topping], topping_names: type[Topping_names]):
         self.current_pizza = Pizza("Blank")
+        self.topping_maker = topping_maker
+        self.topping_names = topping_names
 
     def selection(self):
         next_step = False
@@ -33,9 +42,10 @@ Your choice: """)
         pbchoice = pbchoice.upper()
 
         if pbchoice == "A":
-            self.current_pizza = Pizza("Pepperoni", "Pepperoni", "Margerita")
+            self.current_pizza = Pizza("Pepperoni", self.topping_maker(self.topping_names.PEPPERONI.value, 2), 
+                                        self.topping_maker(self.topping_names.MARGERITA.value, 1))
             print("You have chosen Pepperoni!")
 
-        
-test = Main(Pizza)
+prices: dict[str, float] =  {}      
+test = Main(Pizza, Topping, Topping_names)
 test.selection()
