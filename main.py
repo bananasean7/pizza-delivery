@@ -64,9 +64,9 @@ Your choice: """)
             print("You have chosen Meat Feast!")
         if pbchoice == "C":
             self.current_pizza = Pizza("Double Cheese", self.topping_names.MARGERITA.value, self.topping_names.MARGERITA.value)
+            print("You have chosen Double Cheese!")
         if pbchoice == "D":
             self.current_pizza = Pizza("Haitian special", self.topping_names.NUCLEAR_PEPPERONI.value)
-            print("You have chosen Double Cheese!")
         
         self.price(0.75, 1)
 
